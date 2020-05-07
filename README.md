@@ -1,9 +1,14 @@
 # INFYTQ-SOLUTION
 aLL INFYTQ SOLUTION OF DBMS,PYTHON,PYTTHON WITH DATASTRUCTURE AND PYTHON OOPS
 
+Question:
+
+
 Display month of sale and number of sales done in that month sorted in descending order of sales.
 
-SOLUTION
+
+
+SOLUTION:
 
 
 select to_char(sldate,'Month') as month,count(sid) as NUMBER_SALE from sale 
