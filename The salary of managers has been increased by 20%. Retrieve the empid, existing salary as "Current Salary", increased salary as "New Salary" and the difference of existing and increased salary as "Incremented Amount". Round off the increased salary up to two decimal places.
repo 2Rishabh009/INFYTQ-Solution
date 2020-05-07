@@ -1,0 +1,1 @@
+select empid,salary"Current Salary",salary*1.2 "New Salary", round(salary*0.2,2)"Incremented Amount" from empdetails where lower(designation)='manager'
