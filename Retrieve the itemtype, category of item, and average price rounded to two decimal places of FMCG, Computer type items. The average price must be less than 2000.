@@ -1,0 +1,9 @@
+Retrieve the itemtype, category of item, and average price rounded to two decimal places of FMCG, Computer type items. The average price must be less than 2000.
+
+
+
+SELECT ItemType, Category, ROUND(AVG(Price),2)"Average item price" 
+FROM Item 
+WHERE ItemType in('FMCG','Computer') 
+GROUP BY ItemType,Category;
+HAVING Avg(Price) < 2000
