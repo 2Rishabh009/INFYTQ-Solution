@@ -1,0 +1,3 @@
+Identify the items which are purchased by customers of retail outlets. Display itemcode, itemtype, descr and category of those items. Display unique rows.
+
+SELECT ITEMCODE, ITEMTYPE, DESCR, CATEGORY FROM ITEM WHERE ITEMCODE IN (SELECT ITEMCODE FROM PURCHASEBILL)
