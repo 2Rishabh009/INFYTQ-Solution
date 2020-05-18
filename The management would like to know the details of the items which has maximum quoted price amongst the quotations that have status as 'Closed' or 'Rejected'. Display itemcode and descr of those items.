@@ -1,0 +1,10 @@
+The management would like to know the details of the items which has maximum quoted price amongst the quotations that have status as 'Closed' or 'Rejected'. Display itemcode and descr of those items.
+
+SELECT ITEMCODE, DESCR FROM ITEM WHERE ITEMCODE IN 
+	(
+	  SELECT DISTINCT ITEMCODE FROM QUOTATION WHERE QUOTEDPRICE = 
+		(
+		  SELECT MAX(QUOTEDPRICE) FROM QUOTATION WHERE QSTATUS IN ('Rejected','Closed')
+		) 
+	  AND QSTATUS IN ('Rejected','Closed')
+	)
