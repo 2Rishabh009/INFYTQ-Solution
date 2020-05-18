@@ -1,0 +1,3 @@
+Identify the item details that have the least quoted price with the quotation status as 'Rejected'. Display itemcode, itemtype, descr and category of those items.
+
+select itemcode,itemtype,descr,category from item where itemcode in (select distinct itemcode from quotation where quotedprice=(select min(quotedprice) from quotation  where lower(qstatus)='rejected'))
