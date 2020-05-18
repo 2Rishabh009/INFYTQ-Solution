@@ -1,0 +1,3 @@
+Identify the item having second highest price. Display itemcode, descr and price of those items.
+
+select itemcode,descr,price from item where itemcode in (select itemcode from item where price=(select max(price) from item where price<>(select max(price) from item )))
