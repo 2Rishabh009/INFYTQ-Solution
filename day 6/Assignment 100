@@ -1,0 +1,7 @@
+Identify the vehicle which is purchased by the maximum number of employees. Display empno and ename of the employees who have purchased the identified vehicles.
+
+SELECT EMPNO, ENAME FROM EMP WHERE EMPNO IN (
+SELECT EV1.EMPNO FROM EMPVEHICLE EV1, EMPVEHICLE EV2 WHERE EV1.VEHICLEID=EV2.VEHICLEID AND 
+EV1.EMPNO<>EV2.EMPNO
+GROUP BY EV1.EMPNO
+)
