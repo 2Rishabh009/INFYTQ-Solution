@@ -1,0 +1,11 @@
+Identify purchase bills in which the bill amount is less than or equal to the average bill amount of all the items purchased in the same retail outlet. Display billid and itemcode for the same.
+
+SELECT P.BILLID, P.ITEMCODE 
+FROM PURCHASEBILL P
+WHERE P.BILLAMOUNT<=
+(
+SELECT AVG(P1.BILLAMOUNT)
+FROM PURCHASEBILL P1
+WHERE P1.ROID=P.ROID
+GROUP BY ROID
+)
