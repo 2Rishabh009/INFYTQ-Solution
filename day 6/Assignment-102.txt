@@ -1,0 +1,10 @@
+Display the itemcode, descr and qdate for those items which are quoted below the maximum quoted price on the same day.
+
+SELECT I.ITEMCODE, I.DESCR, Q.QDATE 
+FROM ITEM I inner join QUOTATION Q on I.ITEMCODE=Q.ITEMCODE
+where Q.QUOTEDPRICE <
+(
+  SELECT MAX(QUOTEDPRICE) FROM QUOTATION Q1
+  WHERE Q1.QDATE=Q.QDATE
+  AND Q1.QUOTATIONID<>Q.QUOTATIONID
+)
