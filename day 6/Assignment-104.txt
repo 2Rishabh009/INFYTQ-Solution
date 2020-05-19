@@ -1,0 +1,15 @@
+Identify the supplier who has submitted the quotation for an item with the quoted price, less than the maximum quoted price submitted by all other suppliers, for the same item.Display sname, itemcode and item description for the identified supplier. Do not display duplicate records.
+
+
+
+SELECT DISTINCT Q1.SNAME, Q1.ITEMCODE, I.DESCR
+FROM QUOTATION Q1, ITEM I
+WHERE Q1.ITEMCODE=I.ITEMCODE
+AND Q1.QUOTEDPRICE<
+(
+SELECT MAX(Q2.QUOTEDPRICE)
+FROM QUOTATION Q2
+WHERE Q2.ITEMCODE=Q1.ITEMCODE
+AND Q2.SNAME<>Q1.SNAME
+GROUP BY (Q2.ITEMCODE)
+)
